@@ -1,0 +1,11 @@
+{
+  "name": "atukai/ze-theme-middleware",
+  "type": "library",
+  "description": "Themes support for Zend Expressive",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "At\\Theme\\": "src"
+    }
+  }
+}
