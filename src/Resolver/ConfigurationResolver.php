@@ -27,9 +27,9 @@ class ConfigurationResolver implements ResolverInterface
      */
     public function resolve()
     {
-        if (!isset($this->config['current_theme'])){
+        if (!isset($this->config['default_theme'])){
             return null;
         }
-        return $this->config['current_theme'];
+        return $this->config['default_theme'];
     }
 }
