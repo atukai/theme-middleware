@@ -4,13 +4,12 @@ namespace At\Theme\Resolver\Factory;
 
 use Interop\Container\ContainerInterface;
 use At\Theme\Resolver\ConfigurationResolver;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class ConfigurationResolverFactory
  * @package Theme\Resolver\Factory
  */
-class ConfigurationResolverFactory implements FactoryInterface
+class ConfigurationResolverFactory
 {
     /**
      * @param ContainerInterface $container

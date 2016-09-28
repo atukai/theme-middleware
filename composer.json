@@ -1,5 +1,5 @@
 {
-  "name": "atukai/ze-theme-middleware",
+  "name": "atukai/theme-middleware",
   "type": "library",
   "description": "Themes support for Zend Expressive",
   "license": "MIT",

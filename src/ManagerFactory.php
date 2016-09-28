@@ -5,13 +5,12 @@ namespace At\Theme;
 use Interop\Container\ContainerInterface;
 use At\Theme\Resolver\ResolverPluginManager;
 use Zend\Expressive\Template\TemplateRendererInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class ManagerFactory
  * @package Theme
  */
-class ManagerFactory implements FactoryInterface
+class ManagerFactory
 {
     /**
      * @param ContainerInterface $container

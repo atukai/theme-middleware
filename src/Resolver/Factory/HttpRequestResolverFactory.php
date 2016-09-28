@@ -5,13 +5,12 @@ namespace At\Theme\Resolver\Factory;
 use Interop\Container\ContainerInterface;
 use At\Theme\Helper\ServerRequestHelper;
 use At\Theme\Resolver\HttpRequestResolver;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class HttpRequestResolverFactory
  * @package Theme\Resolver\Factory
  */
-class HttpRequestResolverFactory implements FactoryInterface
+class HttpRequestResolverFactory
 {
     /**
      * @param ContainerInterface $container

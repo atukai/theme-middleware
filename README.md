@@ -1,2 +1,2 @@
-# ze-theme-middleware
-Zend Expressive Theme Supporting Middleware
+# Theme Middleware
+Theme Supporting Middleware
