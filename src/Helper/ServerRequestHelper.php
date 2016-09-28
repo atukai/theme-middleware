@@ -2,17 +2,17 @@
 
 namespace At\Theme\Helper;
 
-use Zend\Diactoros\Uri;
+use Psr\Http\Message\UriInterface;
 
 class ServerRequestHelper
 {
     /**
-     * @var Uri
+     * @var UriInterface
      */
     private $uri;
 
     /**
-     * @return mixed
+     * @return UriInterface
      */
     public function getUri()
     {
@@ -20,7 +20,7 @@ class ServerRequestHelper
     }
 
     /**
-     * @param mixed $uri
+     * @param $uri
      */
     public function setUri($uri)
     {

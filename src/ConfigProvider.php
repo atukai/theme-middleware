@@ -12,7 +12,6 @@ use At\Theme\Resolver\Factory\HttpRequestResolverFactory;
 use At\Theme\Resolver\HttpRequestResolver;
 use At\Theme\Resolver\ResolverPluginManager;
 use At\Theme\Resolver\ResolverPluginManagerFactory;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 class ConfigProvider
 {
@@ -26,7 +25,9 @@ class ConfigProvider
                     ThemeMiddleware::class => function(ContainerInterface $c) {
                         return new ThemeMiddleware($c->get(Manager::class));
                     },
-                    ServerRequestHelper::class => InvokableFactory::class,
+                    ServerRequestHelper::class => function(ContainerInterface $c) {
+                        return new ServerRequestHelper();
+                    },
                     ServerRequestHelperMiddleware::class => function(ContainerInterface $c) {
                         return new ServerRequestHelperMiddleware($c->get(ServerRequestHelper::class));
                     }

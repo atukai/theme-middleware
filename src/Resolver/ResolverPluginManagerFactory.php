@@ -3,9 +3,8 @@
 namespace At\Theme\Resolver;
 
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
 
-class ResolverPluginManagerFactory implements FactoryInterface
+class ResolverPluginManagerFactory
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
