@@ -10,7 +10,7 @@ class ResolverPluginManagerFactory
     {
         $manager = new ResolverPluginManager(
             $container,
-            $container->get('config')['theme']['resolver_plugin_manager']
+            $container->get('config')['themes']['resolver_plugin_manager']
         );
         return $manager;
     }
