@@ -20,7 +20,7 @@ class ManagerFactory
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $themeConfig = $container->get('config')['theme'];
+        $themeConfig = $container->get('config')['themes'];
         $manager = new Manager($container->get(TemplateRendererInterface::class), $themeConfig);
 
         if (isset($themeConfig['resolvers'])){

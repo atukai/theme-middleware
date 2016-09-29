@@ -44,7 +44,7 @@ class ConfigProvider
                 ],
             ],
 
-            'theme' => [
+            'themes' => [
                 'default_theme' => null,
                 'custom_theme_path' => false,
                 'theme_paths' => [],
