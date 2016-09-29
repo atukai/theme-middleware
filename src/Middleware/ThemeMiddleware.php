@@ -12,17 +12,29 @@ use At\Theme\Manager;
 class ThemeMiddleware
 {
     /**
+     * Name of the attribute added to the ServerRequest object
+     *
+     * @var string
+     */
+    protected $attributeName = 'theme';
+
+    /**
      * @var Manager
      */
     protected $themeManager;
 
     /**
-     * Theme constructor.
+     * ThemeMiddleware constructor.
      * @param Manager $themeManager
+     * @param null $attributeName
      */
-    public function __construct(Manager $themeManager)
+    public function __construct(Manager $themeManager, $attributeName = null)
     {
         $this->themeManager = $themeManager;
+
+        if ($attributeName) {
+            $this->attributeName = $attributeName;
+        }
     }
 
     /**
@@ -33,7 +45,7 @@ class ThemeMiddleware
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
     {
-        $request = $request->withAttribute('theme', $this->themeManager->getTheme());
+        $request = $request->withAttribute($this->attributeName, $this->themeManager->getTheme());
         return $next($request, $response);
     }
 }
