@@ -8,7 +8,7 @@ for Zend Expressive.
 
 ## Usage
 
-Zend Expressive:
+**Zend Expressive**:
 
 Include config from ConfigProvider.php. Recommend to use [Expressive Configuration Manager]
 (https://github.com/mtymek/expressive-config-manager)
@@ -35,6 +35,11 @@ Configure your settings.
     ],
 ];
 ```
+
+**Other frameworks**:
+
+You should implement `Zend\Expressive\Template\TemplateRendererInterface` and 
+put it under `TemplateRendererInterface::class` key into your container
 
 ## Resolvers
 It uses resolvers to detect theme name that should be currently used for rendering.
