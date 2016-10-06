@@ -6,6 +6,8 @@ use Interop\Container\ContainerInterface;
 use At\Theme\Helper\ServerRequestHelper;
 use At\Theme\Middleware\ServerRequestHelperMiddleware;
 use At\Theme\Middleware\ThemeMiddleware;
+use At\Theme\Middleware\AssetMiddleware;
+use At\Theme\Middleware\AssetMiddlewareFactory;
 use At\Theme\Resolver\ConfigurationResolver;
 use At\Theme\Resolver\Factory\ConfigurationResolverFactory;
 use At\Theme\Resolver\Factory\HttpRequestResolverFactory;
@@ -30,7 +32,8 @@ class ConfigProvider
                     },
                     ServerRequestHelperMiddleware::class => function(ContainerInterface $c) {
                         return new ServerRequestHelperMiddleware($c->get(ServerRequestHelper::class));
-                    }
+                    },
+                    AssetMiddleware::class => AssetMiddlewareFactory::class,
                 ],
             ],
 
@@ -42,12 +45,17 @@ class ConfigProvider
                     ],
                     'priority' => 10000,
                 ],
+                'error' => [
+                    'middleware' => [
+                        AssetMiddleware::class
+                    ],
+                    'priority' => -10000,
+                ],
             ],
 
             'themes' => [
+                'paths' => [],
                 'default_theme' => null,
-                'custom_theme_path' => false,
-                'theme_paths' => [],
                 'resolvers' => [
                     ConfigurationResolver::class => 10,
                 ],
@@ -57,6 +65,11 @@ class ConfigProvider
                         ConfigurationResolver::class => ConfigurationResolverFactory::class,
                         HttpRequestResolver::class => HttpRequestResolverFactory::class,
                     ]
+                ],
+
+                'assets' => [
+                    'paths' => [],
+                    'doc_root' => ''
                 ]
             ],
         ];

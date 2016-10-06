@@ -54,9 +54,9 @@ class Manager
 
         // Set the default theme paths (LIFO order)
         $this->themePaths = new PriorityQueue();
-        if (isset($this->options['theme_paths'])){
+        if (isset($this->options['paths'])){
             $priority = 1;
-            foreach ($this->options['theme_paths'] as $path) {
+            foreach ($this->options['paths'] as $path) {
                 $this->themePaths->insert($path, $priority++);
             }
         }
@@ -131,12 +131,7 @@ class Manager
         $n = $pathIterator->count();
         while (!$config && $n-- >0) {
             $path = $pathIterator->extract();
-
-            if ($this->options['custom_theme_path'] === true){
-            	$configFile = str_replace('{theme}', $theme, $path) . '/config.php';
-			} else {
-                $configFile = $path . $theme . '/config.php';
-            }
+            $configFile = $path . $theme . '/config.php';
 
             if (file_exists($configFile)){
                 $config = include $configFile;
