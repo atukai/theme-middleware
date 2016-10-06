@@ -90,7 +90,7 @@ class Manager
     /**
      * Initialize the theme by selecting a theme using the theme resolvers and updating the view resolver
      */
-    public function loadTheme()
+    protected function loadTheme()
     {
         // If already initialized then return
         if ($this->currentTheme){
@@ -98,7 +98,7 @@ class Manager
         }
 
         // Find the current theme that should be used
-        $this->currentTheme = $this->resolveCurrentTheme();
+        $this->currentTheme = $this->resolveTheme();
 
         if (!$this->currentTheme){
             return false;
@@ -117,6 +117,8 @@ class Manager
                 $this->templateRenderer->addPath($path, $namespace);
             }
         }
+
+        $this->templateRenderer->addDefaultParam(TemplateRendererInterface::TEMPLATE_ALL, 'theme', $this->currentTheme);
     }
 
     /**
@@ -163,7 +165,7 @@ class Manager
      * Call each adapter to select a theme until one of theme returns a valid name
      * @return string | null
      */
-    protected function resolveCurrentTheme()
+    protected function resolveTheme()
     {
         $theme = null;
         $resolver = null;
