@@ -54,3 +54,17 @@ By default the `At\Theme\Resolver\ConfigurationResolver` is used to get theme sp
 ];
 ``` 
 
+## Assets
+ 
+```php
+'themes' => [
+    'theme_paths' => [
+         __DIR__ . '/../themes/'        
+    ],
+    'default_theme' => 'default',
+    'assets' => [
+        'paths' => [__DIR__ . '/../themes/default/assets'],
+        'doc_root' => __DIR__ . '/../public/'
+    ]
+];
+```
