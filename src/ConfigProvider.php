@@ -69,7 +69,8 @@ class ConfigProvider
 
                 'assets' => [
                     'paths' => [],
-                    'doc_root' => ''
+                    'doc_root' => '',
+                    'filters' => []
                 ]
             ],
         ];

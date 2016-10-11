@@ -12,7 +12,7 @@
       "container-interop/container-interop": "^1.1",
       "zendframework/zend-expressive-template": "^1.0.1",
       "zendframework/zend-stdlib": "^2.7 || ^3.0",
-      "dflydev/canal": "^1.0"
+      "intervention/image": "^2.3"
   },
   "autoload": {
       "psr-4": {

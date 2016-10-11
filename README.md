@@ -64,7 +64,7 @@ By default the `At\Theme\Resolver\ConfigurationResolver` is used to get theme sp
     'default_theme' => 'default',
     'assets' => [
         'paths' => [__DIR__ . '/../themes/default/assets'],
-        'doc_root' => __DIR__ . '/../public/'
+        'cache_dir' => __DIR__ . '/../public'
     ]
 ];
 ```
