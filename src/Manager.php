@@ -5,6 +5,9 @@ namespace At\Theme;
 use At\Theme\Resolver\ResolverInterface;
 use Zend\Expressive\Template\TemplateRendererInterface;
 use Zend\Stdlib\PriorityQueue;
+use Zend\Expressive\Plates\PlatesRenderer;
+use Zend\Expressive\Twig\TwigRenderer;
+use Zend\Expressive\ZendView\ZendViewRenderer;
 
 /**
  * Class Manager
@@ -116,6 +119,11 @@ class Manager
             foreach ((array) $paths as $path) {
                 $this->templateRenderer->addPath($path, $namespace);
             }
+        }
+
+        if ($this->templateRenderer instanceof PlatesRenderer) {
+        } elseif ($this->templateRenderer instanceof TwigRenderer) {
+        } elseif ($this->templateRenderer instanceof ZendViewRenderer) {
         }
 
         $this->templateRenderer->addDefaultParam(TemplateRendererInterface::TEMPLATE_ALL, 'theme', $this->currentTheme);

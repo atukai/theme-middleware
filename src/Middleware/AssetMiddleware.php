@@ -2,6 +2,7 @@
 
 namespace At\Theme\Middleware;
 
+use At\Theme\MimeDetector;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -107,9 +108,8 @@ class AssetMiddleware
      */
     private function detectMimeType($file)
     {
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mime = finfo_file($finfo, $file);
-        finfo_close($finfo);
+        $detector = new MimeDetector();
+        $mime = $detector->getMimeType($file);
 
         return $mime;
     }
