@@ -43,14 +43,18 @@ put it under `TemplateRendererInterface::class` key into your container
 
 ## Resolvers
 It uses resolvers to detect theme name that should be currently used for rendering.
-By default the `At\Theme\Resolver\ConfigurationResolver` is used to get theme specified in config:
+By default the `At\Theme\Resolver\ConfigurationResolver` is used to get theme specified in config.
+You can add one or more resolvers with priority.
  
 ```php
 'themes' => [
-    'theme_paths' => [
+    'paths' => [
          __DIR__ . '/../themes/'        
     ],
     'default_theme' => 'default',
+    'resolvers' => [
+        \At\Theme\Resolver\HttpRequestResolver::class => 20,
+    ],
 ];
 ``` 
 
@@ -58,10 +62,13 @@ By default the `At\Theme\Resolver\ConfigurationResolver` is used to get theme sp
  
 ```php
 'themes' => [
-    'theme_paths' => [
+    'paths' => [
          __DIR__ . '/../themes/'        
     ],
     'default_theme' => 'default',
+    'resolvers' => [
+        \At\Theme\Resolver\HttpRequestResolver::class => 20,
+    ],
     'assets' => [
         'paths' => [__DIR__ . '/../themes/default/assets'],
         'cache_dir' => __DIR__ . '/../public'
