@@ -38,18 +38,16 @@ class ConfigProvider
             ],
 
             'middleware_pipeline' => [
-                'always' => [
-                    'middleware' => [
-                        ServerRequestHelperMiddleware::class,
-                        ThemeMiddleware::class,
-                    ],
-                    'priority' => 10000,
+                [
+                    'middleware' => ServerRequestHelperMiddleware::class
                 ],
-                'error' => [
-                    'middleware' => [
-                        AssetMiddleware::class
-                    ],
-                    'priority' => -10000,
+                [
+                    'middleware' => ThemeMiddleware::class
+                ],
+                [
+                    'middleware' => AssetMiddleware::class,
+                    //'error' => true
+                    'priority' => -100000
                 ],
             ],
 

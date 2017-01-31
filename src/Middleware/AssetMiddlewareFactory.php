@@ -4,17 +4,13 @@ namespace At\Theme\Middleware;
 
 use Interop\Container\ContainerInterface;
 
-/**
- * Class AssetMiddlewareFactory
- * @package At\Theme
- */
 class AssetMiddlewareFactory
 {
     /**
      * @param ContainerInterface $container
-     * @param string $requestedName
+     * @param $requestedName
      * @param array|null $options
-     * @return Manager
+     * @return AssetMiddleware
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
