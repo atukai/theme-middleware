@@ -57,7 +57,7 @@ class Manager
 
         // Set the default theme paths (LIFO order)
         $this->themePaths = new PriorityQueue();
-        if (isset($this->options['paths'])){
+        if (isset($this->options['paths'])) {
             $priority = 1;
             foreach ($this->options['paths'] as $path) {
                 $this->themePaths->insert($path, $priority++);
@@ -83,7 +83,7 @@ class Manager
      */
     public function getTheme()
     {
-        if (!$this->currentTheme) {
+        if (! $this->currentTheme) {
             $this->loadTheme();
         }
 
@@ -96,20 +96,20 @@ class Manager
     protected function loadTheme()
     {
         // If already initialized then return
-        if ($this->currentTheme){
+        if ($this->currentTheme) {
             return true;
         }
 
         // Find the current theme that should be used
         $this->currentTheme = $this->resolveTheme();
 
-        if (!$this->currentTheme){
+        if (! $this->currentTheme) {
             return false;
         }
 
         // Get theme configuration
         $config = $this->getThemeConfig($this->currentTheme);
-        if (!$config){
+        if (! $config) {
             throw new \RuntimeException('Config file not found for theme `'. $this->currentTheme .'`.');
         }
 
@@ -139,11 +139,11 @@ class Manager
         $pathIterator = $this->themePaths->getIterator();
         $config = null;
         $n = $pathIterator->count();
-        while (!$config && $n-- >0) {
+        while (! $config && $n-- > 0) {
             $path = $pathIterator->extract();
             $configFile = $path . $theme . '/config.php';
 
-            if (file_exists($configFile)){
+            if (file_exists($configFile)) {
                 $config = include $configFile;
             }
         }
@@ -181,12 +181,12 @@ class Manager
         $iterator = $this->resolvers;
         $i = $iterator->count();
 
-        while (!$theme && $i-- >0) {
+        while (! $theme && $i-- > 0) {
             $resolver = $iterator->extract();
             $theme = $resolver->resolve();
         }
 
-        if (!$theme) {
+        if (! $theme) {
             return null;
         }
 

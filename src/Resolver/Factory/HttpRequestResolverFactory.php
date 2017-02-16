@@ -6,10 +6,6 @@ use Interop\Container\ContainerInterface;
 use At\Theme\Helper\ServerRequestHelper;
 use At\Theme\Resolver\HttpRequestResolver;
 
-/**
- * Class HttpRequestResolverFactory
- * @package Theme\Resolver\Factory
- */
 class HttpRequestResolverFactory
 {
     /**

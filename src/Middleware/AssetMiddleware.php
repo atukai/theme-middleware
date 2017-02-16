@@ -19,11 +19,10 @@ class AssetMiddleware
     protected $cacheDir;
 
     /**
-     * AssetMiddleware constructor.
      * @param array $paths
      * @param $cacheDir
      */
-    public function __construct(array $paths = [], $cacheDir)
+    public function __construct(array $paths, $cacheDir)
     {
         $this->paths = $paths;
         $this->cacheDir = realpath($cacheDir);
@@ -85,18 +84,18 @@ class AssetMiddleware
      */
     private function cacheFile($file, $targetFile)
     {
-        if (!$this->cacheDir) {
+        if (! $this->cacheDir) {
             return;
         }
 
-        if (!is_writable($this->cacheDir)) {
+        if (! is_writable($this->cacheDir)) {
             trigger_error(sprintf('Directory %s is not writeable', $this->cacheDir));
             return;
         }
 
         $targetFile = $this->cacheDir . $targetFile;
         $targetDir  = dirname($targetFile);
-        if (!is_dir($targetDir)) {
+        if (! is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
         file_put_contents($targetFile, file_get_contents($file));

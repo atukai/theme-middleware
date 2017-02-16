@@ -23,9 +23,9 @@ class ManagerFactory
         $themeConfig = $container->get('config')['themes'];
         $manager = new Manager($container->get(TemplateRendererInterface::class), $themeConfig);
 
-        if (isset($themeConfig['resolvers'])){
+        if (isset($themeConfig['resolvers'])) {
             $resolversPluginManager = $container->get(ResolverPluginManager::class);
-            foreach($themeConfig['resolvers'] as $serviceName => $priority) {
+            foreach ($themeConfig['resolvers'] as $serviceName => $priority) {
                 $resolver = $resolversPluginManager->get($serviceName);
                 $manager->addResolver($resolver, $priority);
             }

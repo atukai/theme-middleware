@@ -24,13 +24,13 @@ class ConfigProvider
                 'factories' => [
                     Manager::class => ManagerFactory::class,
                     ResolverPluginManager::class => ResolverPluginManagerFactory::class,
-                    ThemeMiddleware::class => function(ContainerInterface $c) {
+                    ThemeMiddleware::class => function (ContainerInterface $c) {
                         return new ThemeMiddleware($c->get(Manager::class));
                     },
-                    ServerRequestHelper::class => function(ContainerInterface $c) {
+                    ServerRequestHelper::class => function (ContainerInterface $c) {
                         return new ServerRequestHelper();
                     },
-                    ServerRequestHelperMiddleware::class => function(ContainerInterface $c) {
+                    ServerRequestHelperMiddleware::class => function (ContainerInterface $c) {
                         return new ServerRequestHelperMiddleware($c->get(ServerRequestHelper::class));
                     },
                     AssetMiddleware::class => AssetMiddlewareFactory::class,
@@ -46,8 +46,7 @@ class ConfigProvider
                 ],
                 [
                     'middleware' => AssetMiddleware::class,
-                    //'error' => true
-                    'priority' => -100000
+                    'priority' => -10000
                 ],
             ],
 
