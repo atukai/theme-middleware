@@ -6,10 +6,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use At\Theme\Helper\ServerRequestHelper;
 
-/**
- * Class ServerRequestHelperMiddleware
- * @package Zend\Expressive\Helper
- */
 class ServerRequestHelperMiddleware
 {
     /**

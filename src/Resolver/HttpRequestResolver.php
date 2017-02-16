@@ -4,10 +4,6 @@ namespace At\Theme\Resolver;
 
 use At\Theme\Helper\ServerRequestHelper;
 
-/**
- * Class HttpRequestResolver
- * @package Application\Theme\Resolver
- */
 class HttpRequestResolver implements ResolverInterface
 {
     const THEME_PARAM_NAME = 'tmpl';
@@ -31,7 +27,7 @@ class HttpRequestResolver implements ResolverInterface
      */
     public function resolve()
     {
-        parse_str($this->requestHelper->getUri()->getQuery(self::THEME_PARAM_NAME));
+        parse_str($this->requestHelper->getUri()->getQuery());
 
         if (isset(${self::THEME_PARAM_NAME})) {
             return ${self::THEME_PARAM_NAME};
