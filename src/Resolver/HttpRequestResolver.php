@@ -6,7 +6,7 @@ use At\Theme\Helper\ServerRequestHelper;
 
 class HttpRequestResolver implements ResolverInterface
 {
-    const THEME_PARAM_NAME = 'tmpl';
+    const THEME_URI_PARAM_NAME = 'tmpl';
 
     /**
      * @var ServerRequestHelper
@@ -14,7 +14,6 @@ class HttpRequestResolver implements ResolverInterface
     protected $requestHelper;
 
     /**
-     * HttpRequestResolver constructor.
      * @param ServerRequestHelper $helper
      */
     public function __construct(ServerRequestHelper $helper)
@@ -23,14 +22,14 @@ class HttpRequestResolver implements ResolverInterface
     }
 
     /**
-     * @return mixed|\Zend\Stdlib\ParametersInterface
+     * @return string
      */
     public function resolve()
     {
         parse_str($this->requestHelper->getUri()->getQuery());
 
-        if (isset(${self::THEME_PARAM_NAME})) {
-            return ${self::THEME_PARAM_NAME};
+        if (isset(${self::THEME_URI_PARAM_NAME})) {
+            return ${self::THEME_URI_PARAM_NAME};
         }
     }
 }

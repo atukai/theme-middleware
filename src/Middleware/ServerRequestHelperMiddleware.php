@@ -30,7 +30,7 @@ class ServerRequestHelperMiddleware
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
     {
-        $this->helper->setUri($request->getAttribute('originalUri'));
+        $this->helper->setUri($request->getUri());
         return $next($request, $response);
     }
 }

@@ -2,10 +2,6 @@
 
 namespace At\Theme\Resolver;
 
-/**
- * Interface ResolverInterface
- * @package Theme\Resolver
- */
 interface ResolverInterface
 {
     /**

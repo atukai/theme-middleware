@@ -5,14 +5,8 @@ namespace At\Theme;
 use At\Theme\Resolver\ResolverInterface;
 use Zend\Expressive\Template\TemplateRendererInterface;
 use Zend\Stdlib\PriorityQueue;
-use Zend\Expressive\Plates\PlatesRenderer;
-use Zend\Expressive\Twig\TwigRenderer;
 use Zend\Expressive\ZendView\ZendViewRenderer;
 
-/**
- * Class Manager
- * @package Theme
- */
 class Manager
 {
     /**
