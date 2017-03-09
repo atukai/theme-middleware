@@ -37,19 +37,6 @@ class ConfigProvider
                 ],
             ],
 
-            'middleware_pipeline' => [
-                [
-                    'middleware' => ServerRequestHelperMiddleware::class
-                ],
-                [
-                    'middleware' => ThemeMiddleware::class
-                ],
-                [
-                    'middleware' => AssetMiddleware::class,
-                    'priority' => -10000
-                ],
-            ],
-
             'themes' => [
                 'paths' => [],
                 'default_theme' => null,
