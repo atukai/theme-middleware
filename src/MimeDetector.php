@@ -2,12 +2,10 @@
 
 namespace At\Theme;
 
-/**
- * Class MimeResolver
- * @package At\Theme
- */
 class MimeDetector
 {
+    const TYPE_DEFAULT = 'text/plain';
+
     /**
      * @var array
      */
@@ -546,17 +544,16 @@ class MimeDetector
     ];
 
     /**
-     * @param $filename
+     * @param string $filename
      * @return string
      */
-    public function getMimeType($filename)
+    public function getMimeType(string $filename): string
     {
         $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
         if (isset($this->mimeTypes[$extension])) {
             return $this->mimeTypes[$extension];
         }
 
-        return 'text/plain';
+        return self::TYPE_DEFAULT;
     }
 }

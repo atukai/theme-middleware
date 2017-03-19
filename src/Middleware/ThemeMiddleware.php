@@ -5,10 +5,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use At\Theme\Manager;
 
-/**
- * Class ThemeMiddleware
- * @package Theme\Middleware
- */
 class ThemeMiddleware
 {
     /**

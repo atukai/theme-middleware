@@ -5,10 +5,6 @@ namespace At\Theme\Resolver\Factory;
 use Interop\Container\ContainerInterface;
 use At\Theme\Resolver\ConfigurationResolver;
 
-/**
- * Class ConfigurationResolverFactory
- * @package Theme\Resolver\Factory
- */
 class ConfigurationResolverFactory
 {
     /**

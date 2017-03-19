@@ -2,10 +2,6 @@
 
 namespace At\Theme\Resolver;
 
-/**
- * Class ConfigurationResolver
- * @package Theme\Resolver
- */
 class ConfigurationResolver implements ResolverInterface
 {
     /**

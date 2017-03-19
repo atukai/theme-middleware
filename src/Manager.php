@@ -5,7 +5,6 @@ namespace At\Theme;
 use At\Theme\Resolver\ResolverInterface;
 use Zend\Expressive\Template\TemplateRendererInterface;
 use Zend\Stdlib\PriorityQueue;
-use Zend\Expressive\ZendView\ZendViewRenderer;
 
 class Manager
 {
@@ -85,7 +84,7 @@ class Manager
     }
 
     /**
-     * Initialize the theme by selecting a theme using the theme resolvers and updating the view resolver
+     * @return bool
      */
     protected function loadTheme()
     {
@@ -115,10 +114,10 @@ class Manager
             }
         }
 
-        if ($this->templateRenderer instanceof PlatesRenderer) {
+/*        if ($this->templateRenderer instanceof PlatesRenderer) {
         } elseif ($this->templateRenderer instanceof TwigRenderer) {
         } elseif ($this->templateRenderer instanceof ZendViewRenderer) {
-        }
+        }*/
 
         $this->templateRenderer->addDefaultParam(TemplateRendererInterface::TEMPLATE_ALL, 'theme', $this->currentTheme);
     }

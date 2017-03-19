@@ -32,7 +32,7 @@ class AssetMiddleware
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @param callable $next
-     * @return static
+     * @return ResponseInterface|static
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
     {
@@ -41,7 +41,7 @@ class AssetMiddleware
         // Prevent LFI
         if (preg_match('#\.\.[\\\/]#', $uriPath)) {
             $response = $response->withStatus(404);
-            return $next($request, $response);
+            return $response;
         }
 
         $file = $this->resolveFile($uriPath);

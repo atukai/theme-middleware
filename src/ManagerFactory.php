@@ -2,14 +2,10 @@
 
 namespace At\Theme;
 
-use Interop\Container\ContainerInterface;
 use At\Theme\Resolver\ResolverPluginManager;
+use Psr\Container\ContainerInterface;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
-/**
- * Class ManagerFactory
- * @package Theme
- */
 class ManagerFactory
 {
     /**
@@ -18,7 +14,7 @@ class ManagerFactory
      * @param array|null $options
      * @return Manager
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, string $requestedName, array $options = null)
     {
         $themeConfig = $container->get('config')['themes'];
         $manager = new Manager($container->get(TemplateRendererInterface::class), $themeConfig);
