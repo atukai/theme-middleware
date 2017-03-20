@@ -1,11 +1,12 @@
 <?php
 namespace At\Theme\Middleware;
 
+use Interop\Http\ServerMiddleware\DelegateInterface;
+use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use At\Theme\Manager;
 
-class ThemeMiddleware
+class ThemeMiddleware implements MiddlewareInterface
 {
     /**
      * Name of the attribute added to the ServerRequest object
@@ -35,13 +36,12 @@ class ThemeMiddleware
 
     /**
      * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
-     * @param callable $next
+     * @param DelegateInterface $delegate
      * @return mixed
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         $request = $request->withAttribute($this->attributeName, $this->themeManager->getTheme());
-        return $next($request, $response);
+        return $delegate->process($request);
     }
 }

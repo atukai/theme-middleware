@@ -3,6 +3,7 @@
 namespace At\Theme\Middleware;
 
 use At\Theme\MimeDetector;
+use Interop\Http\ServerMiddleware\DelegateInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -30,29 +31,29 @@ class AssetMiddleware
 
     /**
      * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
-     * @param callable $next
-     * @return ResponseInterface|static
+     * @param DelegateInterface $delegate
+     * @return ResponseInterface
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         $uriPath = $request->getUri()->getPath();
 
         // Prevent LFI
         if (preg_match('#\.\.[\\\/]#', $uriPath)) {
-            $response = $response->withStatus(404);
-            return $response;
+            $response = $delegate->process($request);
+            return $response->withStatus(404);
         }
 
         $file = $this->resolveFile($uriPath);
         if ($file) {
             $this->cacheFile($file, $uriPath);
+            $response = $delegate->process($request);
             $response->getBody()->write(file_get_contents($file));
             $response = $response->withStatus(200);
             return $response->withHeader('Content-Type', $this->detectMimeType($file));
         }
 
-        return $next($request, $response);
+        return $delegate->process($request);
     }
 
     /**

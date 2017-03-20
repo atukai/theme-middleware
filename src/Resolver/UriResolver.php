@@ -20,7 +20,7 @@ class UriResolver implements ResolverInterface
     public function resolve()
     {
         if (!$this->uri) {
-            throw new \Exception('No Uri provided.');
+            throw new \Exception('No Uri provided. Register UriResolverMiddleware.');
         }
 
         parse_str($this->uri->getQuery());
