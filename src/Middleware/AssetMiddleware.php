@@ -4,10 +4,11 @@ namespace At\Theme\Middleware;
 
 use At\Theme\MimeDetector;
 use Interop\Http\ServerMiddleware\DelegateInterface;
+use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class AssetMiddleware
+class AssetMiddleware implements MiddlewareInterface
 {
     /**
      * @var array
