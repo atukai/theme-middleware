@@ -7,6 +7,7 @@ use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response;
 
 class AssetMiddleware implements MiddlewareInterface
 {
@@ -48,7 +49,7 @@ class AssetMiddleware implements MiddlewareInterface
         $file = $this->resolveFile($uriPath);
         if ($file) {
             $this->cacheFile($file, $uriPath);
-            $response = $delegate->process($request);
+            $response = new Response();
             $response->getBody()->write(file_get_contents($file));
             $response = $response->withStatus(200);
             return $response->withHeader('Content-Type', $this->detectMimeType($file));
